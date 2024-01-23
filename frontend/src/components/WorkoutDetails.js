@@ -18,15 +18,20 @@ const WorkoutDetails = ({ workout }) => {
       return;
     }
 
+    // ${process.env.BASE_URL/api...}
+
     try {
-      const response = await fetch(`/api/workouts/${workout._id}`, {
-        method: 'PATCH',
-        body: JSON.stringify(editedWorkout),
-        headers: {
-          'Content-Type': 'application/json',
-          Authorization: `Bearer ${user.token}`,
-        },
-      });
+      const response = await fetch(
+        `${process.env.BASE_URL}/api/workouts/${workout._id}`,
+        {
+          method: 'PATCH',
+          body: JSON.stringify(editedWorkout),
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${user.token}`,
+          },
+        }
+      );
 
       const json = await response.json();
 
@@ -55,12 +60,15 @@ const WorkoutDetails = ({ workout }) => {
       return;
     }
 
-    const response = await fetch(`/api/workouts/${workout._id}`, {
-      method: 'DELETE',
-      headers: {
-        Authorization: `Bearer ${user.token}`,
-      },
-    });
+    const response = await fetch(
+      `${process.env.BASE_URL}/api/workouts/${workout._id}`,
+      {
+        method: 'DELETE',
+        headers: {
+          Authorization: `Bearer ${user.token}`,
+        },
+      }
+    );
 
     const json = await response.json();
 
