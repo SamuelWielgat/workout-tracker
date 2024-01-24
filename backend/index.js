@@ -20,21 +20,17 @@ app.use((req, res, next) => {
 // routes
 app.use('/api/workouts', workoutRoutes);
 app.use('/api/user', userRoutes);
+app.get('/', async (req, res) => {
+  res.send('Server is working on');
+});
 
 // connect to db
 mongoose
   .connect(process.env.MONGO_URI)
   .then(() => {
-    // listen for requests
-    // app.listen(process.env.PORT, () => {
-    //   console.log('connected to db & listening on port', process.env.PORT);
-    // });
-
-    app.listen(process.env.PORT || 3000, () => {
-      console.log(
-        'connected to db & listening on port',
-        process.env.PORT || 3000
-      );
+    const PORT = process.env.PORT || 4001;
+    app.listen(PORT, () => {
+      console.log('connected to db & listening on port', PORT);
     });
   })
   .catch((error) => {

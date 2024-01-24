@@ -18,11 +18,11 @@ const WorkoutDetails = ({ workout }) => {
       return;
     }
 
-    // ${process.env.BASE_URL/api...}
+    // ${process.env.REACT_APP_BASE_URL/api...}
 
     try {
       const response = await fetch(
-        `${process.env.BASE_URL}/api/workouts/${workout._id}`,
+        `${process.env.REACT_APP_BASE_URL}/api/workouts/${workout._id}`,
         {
           method: 'PATCH',
           body: JSON.stringify(editedWorkout),
@@ -61,7 +61,7 @@ const WorkoutDetails = ({ workout }) => {
     }
 
     const response = await fetch(
-      `${process.env.BASE_URL}/api/workouts/${workout._id}`,
+      `${process.env.REACT_APP_BASE_URL}/api/workouts/${workout._id}`,
       {
         method: 'DELETE',
         headers: {

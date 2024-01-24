@@ -22,14 +22,17 @@ const WorkoutForm = () => {
 
     const workout = { title, load, reps };
 
-    const response = await fetch(`${process.env.BASE_URL}/api/workouts`, {
-      method: 'POST',
-      body: JSON.stringify(workout),
-      headers: {
-        'Content-type': 'application/json',
-        Authorization: `Bearer ${user.token}`,
-      },
-    });
+    const response = await fetch(
+      `${process.env.REACT_APP_BASE_URL}/api/workouts`,
+      {
+        method: 'POST',
+        body: JSON.stringify(workout),
+        headers: {
+          'Content-type': 'application/json',
+          Authorization: `Bearer ${user.token}`,
+        },
+      }
+    );
     const json = await response.json();
 
     if (!response.ok) {
